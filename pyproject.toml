@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "color-detector"
+version = "0.1.0"
+description = "Detects and tracks colors in real-time video feeds"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    {name = "Deacon Booker"}
+]
+dependencies = [
+    "opencv-python>=4.5.0",
+    "numpy>=1.20.0",
+    "pyttsx3>=2.90",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "black",
+]
+
+[project.scripts]
+color-tracker = "main:main"
+
+[tool.black]
+line-length = 88
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
