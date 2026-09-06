@@ -22,12 +22,3 @@ dev = [
     "pytest>=6.0",
     "black",
 ]
-
-[project.scripts]
-color-tracker = "main:main"
-
-[tool.black]
-line-length = 88
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
