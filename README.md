@@ -10,6 +10,15 @@ A real-time color detection and tracking application using OpenCV. Select a colo
 - 🔊 Audio feedback using text-to-speech
 - ⚡ Optimized with morphological operations for clean detection
 
+## How It Works
+
+1. Captures video from your webcam
+2. Converts frames to HSV color space (more reliable than RGB)
+3. Creates a binary mask for the selected color
+4. Applies morphological operations to clean up noise
+5. Detects contours and draws bounding box around tracked color
+6. Speaks the color name via text-to-speech
+
 ## Requirements
 
 - Python 3.8+
@@ -53,23 +62,6 @@ Edit `src/config.py` to customize:
 - **Color detection ranges**: `HUE_MAP` (HSV values)
 - **Contour filtering**: `MIN_CONTOUR_AREA`
 - **Camera warmup**: `WARMUP_FRAMES`
-
-## Testing
-
-Run the test suite:
-```bash
-pip install pytest
-pytest
-```
-
-## How It Works
-
-1. Captures video from your webcam
-2. Converts frames to HSV color space (more reliable than RGB)
-3. Creates a binary mask for the selected color
-4. Applies morphological operations to clean up noise
-5. Detects contours and draws bounding box around tracked color
-6. Speaks the color name via text-to-speech
 
 ## Troubleshooting
 

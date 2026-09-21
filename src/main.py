@@ -2,7 +2,7 @@ import config
 import cv2 as cv
 import utils
 
-def main():
+def main() -> None:
     kernel = cv.getStructuringElement(cv.MORPH_RECT, config.MORPH_KERNEL_SIZE) 
 
     video_capture = cv.VideoCapture(0) 
@@ -34,14 +34,13 @@ def main():
                 print("End of video stream.")
                 break
 
+            # === Check for Key Presses ===
             key_press = cv.waitKey(1) & 0xFF
-    
-            # === Check for Quit Command 'Q' ===
-            if key_press == ord('q'):
+
+            if key_press == ord('q'): # Quit command ('Q')
                 break
 
-            # === Check for Color Change Command (keys '1' through '6') ===
-            if key_press in config.COLOR_KEY_MAP:
+            if key_press in config.COLOR_KEY_MAP: # Color change command (Keys '1' through '6')
                 new_color = config.COLOR_KEY_MAP[key_press]
 
                 if new_color != current_color:
@@ -51,7 +50,7 @@ def main():
             # === Frame Processing ===
             frame_hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV) 
             color_mask = utils.build_combined_mask(frame_hsv, color_limits) 
-            clean_mask = cv.morphologyEx(color_mask, cv.MORPH_OPEN, kernel, iterations=2) # Noise Reduction (Morphological Opening)
+            clean_mask = cv.morphologyEx(color_mask, cv.MORPH_OPEN, kernel, iterations=2) # Noise reduction (Morphological opening)
 
             # === Track Contours ===
             contours, _ = cv.findContours(clean_mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
