@@ -7,9 +7,10 @@ name = "color-detector"
 version = "0.1.0"
 description = "Detects and tracks colors in real-time video feeds"
 readme = "README.md"
+license = { text = "MIT" }
 requires-python = ">=3.8"
 authors = [
-    {name = "Deacon Booker"}
+    { name = "Deacon Booker" }
 ]
 dependencies = [
     "opencv-python>=4.5.0",
