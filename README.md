@@ -27,12 +27,12 @@ A real-time color detection and tracking application using OpenCV. Select a colo
 
 ## Installation
 
-1. Clone or download this repository
-2. Create a virtual environment:
+1. Clone or download this repository.
+2. Create and activate a virtual environment:
    ```bash
    python -m venv .venv
    .venv\Scripts\activate  # On Windows
-   # source .venv/bin/activate  # On Mac/Linux
+   # source .venv/bin/activate  # On macOS/Linux
    ```
 3. Install dependencies:
    ```bash
