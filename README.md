@@ -4,11 +4,8 @@ A real-time color detection and tracking application using OpenCV. Select a colo
 
 ## Features
 
-- 🎨 Real-time color detection from webcam
-- 🔄 Switch between 6 colors (red, orange, yellow, green, blue, purple)
-- 📹 Adjustable video resolution and tracking parameters
-- 🔊 Audio feedback using text-to-speech
-- ⚡ Optimized with morphological operations for clean detection
+- Switch between 6 colors (red, orange, yellow, green, blue, purple)
+- Audio feedback using text-to-speech
 
 ## How It Works
 
@@ -17,27 +14,26 @@ A real-time color detection and tracking application using OpenCV. Select a colo
 3. Creates a binary mask for the selected color
 4. Applies morphological operations to clean up noise
 5. Detects contours and draws bounding box around tracked color
-6. Speaks the color name via text-to-speech
 
 ## Requirements
 
 - Python 3.8+
 - Webcam/video input device
-- Windows/Mac/Linux
+- Windows, macOS, or Linux
 
 ## Installation
 
 1. Clone or download this repository.
 2. Create and activate a virtual environment:
-   ```bash
-   python -m venv .venv
-   .venv\Scripts\activate  # On Windows
-   # source .venv/bin/activate  # On macOS/Linux
-   ```
+```bash
+python -m venv .venv
+.venv\Scripts\activate  # On Windows
+# source .venv/bin/activate  # On macOS/Linux
+```
 3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
 
@@ -65,14 +61,14 @@ Edit `src/config.py` to customize:
 
 ## Troubleshooting
 
-**Color not tracking well?**
-- Adjust lighting in your environment
-- Modify HSV ranges in `src/config.py`
-- Ensure your object has solid color
-
 **Webcam not opening?**
 - Check if another app is using the camera
 - Try a different video input device number in `main.py`
+
+**Color not tracking well?**
+- Adjust lighting in your environment (Works best in neutral light)
+- Modify HSV ranges in `src/config.py`
+- Ensure your object has solid color
 
 **Poor performance?**
 - Lower `TARGET_WIDTH` and `TARGET_HEIGHT`
