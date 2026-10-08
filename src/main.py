@@ -21,7 +21,7 @@ def main() -> None:
         color_limits = utils.track_color(current_color)
         
         # === Quick Hardware Warmup ===
-        for _ in range(config.WARMUP_FRAMES): # Grab & discard 5-10 frames so auto-exposure/white-balance stabilize
+        for _ in range(config.WARMUP_FRAMES):  # Grab & discard 5-10 frames so auto-exposure/white-balance stabilize
             video_capture.read()
 
         print("Tracking started. Press '1'-'6' to change colors, or 'q' to quit.")
@@ -37,10 +37,10 @@ def main() -> None:
             # === Check for Key Presses ===
             key_press = cv.waitKey(1) & 0xFF
 
-            if key_press == ord('q'): # Quit command ('Q')
+            if key_press == ord('q'):  # Quit command ('Q')
                 break
 
-            if key_press in config.COLOR_KEY_MAP: # Color change command (Keys '1' through '6')
+            if key_press in config.COLOR_KEY_MAP:  # Color change command (Keys '1' through '6')
                 new_color = config.COLOR_KEY_MAP[key_press]
 
                 if new_color != current_color:
@@ -50,7 +50,7 @@ def main() -> None:
             # === Frame Processing ===
             frame_hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV) 
             color_mask = utils.build_combined_mask(frame_hsv, color_limits) 
-            clean_mask = cv.morphologyEx(color_mask, cv.MORPH_OPEN, kernel, iterations=2) # Noise reduction (Morphological opening)
+            clean_mask = cv.morphologyEx(color_mask, cv.MORPH_OPEN, kernel, iterations=2)  # Noise reduction (Morphological opening)
 
             # === Track Contours ===
             contours, _ = cv.findContours(clean_mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
@@ -64,8 +64,8 @@ def main() -> None:
 
             # === Display Tracking Color ===
             color_label = f"Tracking {current_color.upper()}"
-            cv.putText(frame, color_label, (10, 30), config.TEXT_FONT, config.TEXT_SCALE, config.TEXT_COLOR_OUTLINE, config.TEXT_THICKNESS_OUTLINE)
-            cv.putText(frame, color_label, (10, 30), config.TEXT_FONT, config.TEXT_SCALE, config.TEXT_COLOR_FILL, config.TEXT_THICKNESS_FILL)
+            cv.putText(frame, color_label, (10, 30), cv.FONT_HERSHEY_COMPLEX, config.TEXT_SCALE, config.TEXT_COLOR_OUTLINE, config.TEXT_THICKNESS_OUTLINE)
+            cv.putText(frame, color_label, (10, 30), cv.FONT_HERSHEY_COMPLEX, config.TEXT_SCALE, config.TEXT_COLOR_FILL, config.TEXT_THICKNESS_FILL)
 
             # === Display Videos ===
             cv.imshow("Webcam Stream", frame)
