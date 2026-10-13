@@ -23,7 +23,10 @@ A real-time color detection and tracking application using OpenCV. Select a colo
 
 ## Installation
 
-1. Clone or download this repository.
+1. Clone or download this repository:
+```bash
+git clone https://github.com/O-Deacon-O/color-detector.git
+```
 2. Create and activate a virtual environment:
 ```bash
 python -m venv .venv
